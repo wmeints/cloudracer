@@ -36,3 +36,9 @@ We use pytest to run unit-tests and integration tests. You can run the tests usi
 ```bash
 python -m pytest .
 ```
+
+### Versioning the project
+
+Changes to the project must be made against the dev branch. We only publish changes from the main branch.
+Before pushing a set of changes from dev to main, we bump the version using the command `hatch version release`.
+Versions on dev are always considered beta. We follow semantic versioning in this project.
