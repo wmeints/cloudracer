@@ -1,7 +1,7 @@
 [project]
 name = "cloudracer"
-version = "0.1.0"
 description = "Generate build and deployment script for .NET aspire projects on Azure Container Apps"
+dynamic = ["version"]
 authors = [{ name = "Willem Meints", email = "willem.meints@gmail.com" }]
 dependencies = []
 readme = "README.md"
@@ -11,9 +11,12 @@ requires-python = ">= 3.8"
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.version]
+path = "src/cloudracer/__about__.py"
+
 [tool.rye]
 managed = true
-dev-dependencies = []
+dev-dependencies = ["hatch>=1.12.0"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
