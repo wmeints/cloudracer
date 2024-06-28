@@ -1,10 +1,8 @@
 [project]
-name = "projects"
+name = "cloudracer"
 version = "0.1.0"
-description = "Add your description here"
-authors = [
-    { name = "Willem Meints", email = "1550763+wmeints@users.noreply.github.com" }
-]
+description = "Generate build and deployment script for .NET aspire projects on Azure Container Apps"
+authors = [{ name = "Willem Meints", email = "willem.meints@gmail.com" }]
 dependencies = []
 readme = "README.md"
 requires-python = ">= 3.8"
