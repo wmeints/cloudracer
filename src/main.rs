@@ -1,7 +1,9 @@
 use clap::Parser;
 use cloudracer::cli;
 use cloudracer::config;
+use cloudracer::containers;
 use cloudracer::error::{Error, Result};
+use cloudracer::manifest;
 use std::process::ExitCode;
 use tracing::{error, info};
 
@@ -19,11 +21,13 @@ fn run_tool() -> Result<()> {
     setup_tracing();
 
     let arguments = cli::Cli::parse();
-    let config = config::SolutionConfig::load()?;
+    let config = config::SolutionConfig::load(arguments.config)?;
+    let locations = config::SolutionLocations::new(&config)?;
+    let manifest = manifest::DeploymentManifest::generate(&config.host)?;
 
     match &arguments.command {
-        Some(cli::Commands::Build) => {
-            info!("Building and pushing containers")
+        Some(cli::Commands::Build { version }) => {
+            containers::build(&config, &locations, &manifest, version)?;
         }
         Some(cli::Commands::Push) => {
             info!("Pushing containers")

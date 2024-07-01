@@ -1,1 +1,6 @@
 host: ./playground/MyHost/MyHost.csproj
+repository: acrsmartassist.azurecr.io
+resources:
+  test:
+    memory: "1Gi"
+    cpu: "1"
